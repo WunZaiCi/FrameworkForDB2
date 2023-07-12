@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action path="/index.do" name="com.banma.user.action.IndexAction">
+		<result name="success" path="index.html"/>
+		<result name="fail" path="login.jsp" redirect="true"/>
+	</action>
+	
+	<action path="/login.do" name="com.banma.user.action.LoginAction">
+		<result name="ok" path="index.html"/>
+		<result name="no" path="login.jsp"/>
+	</action>
+</actions>

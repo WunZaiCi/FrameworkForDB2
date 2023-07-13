@@ -9,4 +9,15 @@
 		<result name="ok" path="index.html"/>
 		<result name="no" path="login.jsp"/>
 	</action>
+	
+	<action path="/regist.do" name="com.banma.user.action.RegistAction">
+		<result name="regist" path="regist.jsp"/>
+		<result name="login" path="login.jsp"/>
+	</action>
+	
+	<action path="/api/tags.do" name="com.banma.user.action.TagsAction"
+			dataType="application/json;charset=utf-8">
+		
+	</action>
+	
 </actions>

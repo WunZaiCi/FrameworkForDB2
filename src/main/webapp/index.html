@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="plugins/jquery.min.js">	
+</script>
+<script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js">	
+</script>
+<link href="plugins/bootstrap/css/bootstrap.min.css" rel='stylesheet'>
 </head>
 <body>
+	<div class="container-fluid">
 
+
+		<h1>主页</h1>
+		<div class="row">
+			<div class=".col-xs-12 .col-sm-6 .col-lg-8" >
+				<a href="login.jsp">Login</a> <a href="regist.jsp">Regist</a>
+			</div>
+			<div class=".col-xs-12 .col-sm-6 .col-lg-4">
+				<label>商品类型</label> <select id="tags" name="tag">
+			</div>
+		</div>
+
+
+		</select>
+	</div>
+
+
+
+	<script type="text/javascript">
+		$(function() {
+			$("#tags").on("change", function() {
+				//获取选择项的值
+				this.value
+			});
+			$.ajax("api/tags.do", {
+				success : function(data) {
+					var tags = $("#tags");
+					tags.empty()//清空原内容
+					//添加一个空元素
+					tags.append("<option value=''></option>");
+					for (var i = 0; i < data.length; i++) {
+						tag = data[i];
+						tags.append("<option value='"+tag.name+"'>" + tag.name
+								+ "</option>");
+					}
+				}
+			});
+		});
+	</script>
 </body>
 </html>

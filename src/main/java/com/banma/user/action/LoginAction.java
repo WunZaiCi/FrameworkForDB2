@@ -2,15 +2,28 @@ package com.banma.user.action;
 
 import java.util.HashMap;
 
+import com.banma.bean.User;
+import com.banma.dao.UserDao;
 import com.banma.mvc.action.SupportAction;
+import com.banma.user.action.form.UserForm;
 
 public class LoginAction extends SupportAction{
 	
+	UserDao dao;
+	UserForm form;
+	String name;
+	String passwd;
+	
+	
+	
 	@Override
 	public String execute() {
+		if(dao==null || form==null) {
+			return "no";
+		}
+		System.out.println(name+","+passwd);
 		
-		String name = params.get("name");
-		String passwd = params.get("passwd");
+		User loginUser = dao.login(name,passwd);
 		
 		if("aaa".equals(name)&& "123".equals(passwd)) {
 			session.setAttribute("username", name);

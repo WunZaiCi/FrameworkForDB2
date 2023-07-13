@@ -34,8 +34,9 @@ public class ActionXmlParser {
 					action = new Action();
 					action.setPath(attributes.getValue("path"));
 					action.setName(attributes.getValue("name"));
-					action.setResults(new HashMap<String, Result>());
-
+					action.setResults(new HashMap<>());
+					action.setDataType(attributes.getValue("dataType"));
+				
 				} else if ("result".equals(qName)) {
 					String redirect = attributes.getValue("redirect");
 
@@ -68,11 +69,23 @@ public class ActionXmlParser {
 	public static class Action {
 		private String name;
 		private String path;
+		private String dataType;
 		private HashMap<String, Result> results;
+		
+		public String getDataType() {
+			return dataType;
+		}
+
+		public void setDataType(String dataType) {
+			this.dataType = dataType;
+		}
+
+	
+
 
 		@Override
 		public String toString() {
-			return "Action [name=" + name + ", path=" + path + ", results=" + results + "]";
+			return "Action [name=" + name + ", path=" + path + ", dataType=" + dataType + ", results=" + results + "]";
 		}
 
 		public String getName() {
